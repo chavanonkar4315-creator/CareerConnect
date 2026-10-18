@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | CareerConnect</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'jobs/style.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'job_list' %}">
+          CareerConnect
+        </a>
+
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <span class="text-white"> Hello, {{ user.username }} </span>
+
+          <form method="post" action="{% url 'logout' %}" class="m-0">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light btn-sm">
+              Logout
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-5">
+      <div class="p-4 p-md-5 mb-4 bg-white rounded-4 shadow-sm">
+        <h1 class="fw-bold mb-2">Welcome back, {{ user.username }}!</h1>
+        <p class="text-muted mb-0">
+          Welcome to your CareerConnect account. Find opportunities and manage
+          your job portal activity.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+              <h4 class="fw-bold">Explore Jobs</h4>
+              <p class="text-muted">
+                Browse available opportunities and find your next role.
+              </p>
+              <a href="{% url 'job_list' %}" class="btn btn-primary">
+                Browse Jobs
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+              <h4 class="fw-bold">My Applications</h4>
+              <p class="text-muted">
+                Review the jobs you've applied for and check application status.
+              </p>
+              <a href="{% url 'my_applications' %}" class="btn btn-primary">
+                View Applications
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 text-muted">
+        <small>Email: {{ user.email|default:"No email added" }}</small>
+      </div>
+    </main>
+  </body>
+</html>

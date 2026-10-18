@@ -1,0 +1,30 @@
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Django secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Local database and backups
+db.sqlite3
+db.sqlite3.*
+data_backup.json
+data_backup_original.json
+
+# Uploaded resumes and media
+media/
+
+# Logs and editor files
+*.log
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
